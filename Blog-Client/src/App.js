@@ -40,6 +40,7 @@ const App = () => {
   const addNewBlog = async (newBlog) => {
     try {
       const createdBlog = await blogService.create(newBlog);
+      console.log(createdBlog);
       setBlogs([...blogs, createdBlog]);
       setSuccessMessage(`a new blog ${newBlog.title} by ${newBlog.author} added`);
       setTimeout(() => {
@@ -68,7 +69,7 @@ const App = () => {
       ...blog,
       likes: blog.likes + 1,
     });
-    console.log(result);
+    console.log(result, "what");
     const newBlogs = blogs.map((obj) => {
       if (obj.id === result.id) {
         return result;

@@ -11,6 +11,12 @@ const readinglistRouter = require('./controllers/readinglist');
 const logoutRouter = require('./controllers/logout');
 const cors = require('cors');
 
+let x = 1;
+const y = 1;
+const t = [];
+
+t.push(1);
+
 const app = express();
 
 app.use(express.json());

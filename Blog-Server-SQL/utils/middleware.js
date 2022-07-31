@@ -42,7 +42,9 @@ const tokenExtractor = async (req, res, next) => {
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     try {
       const decodedToken = jwt.verify(authorization.substring(7), SECRET);
-      const token = await Token.findOne({ where: { userId: decodedToken.id } });
+      const token = await Token.findOne({
+        where: { userId: decodedToken.id, token: authorization.substring(7) },
+      });
       const user = await User.findByPk(decodedToken.id);
       if (token && user.disabled === false) {
         req.decodedToken = decodedToken;

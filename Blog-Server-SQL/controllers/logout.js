@@ -9,6 +9,10 @@ logoutRouter.delete('/', tokenExtractor, async (req, res, next) => {
       where: { userId: req.decodedToken.id },
     });
     await token.destroy();
+    const stuff = await Token.findAll({
+      where: { userId: req.decodedToken.id },
+    });
+    console.log(stuff, 'hmmm this is stuff');
     res.status(204).end();
   } catch (error) {
     next(error);
